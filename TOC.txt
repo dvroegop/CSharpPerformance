@@ -1,0 +1,14 @@
+Why?
+Integers!
+Classes versus structs
+Boxing and unboxing
+String interning
+HashSet or Lists
+Async versus sync
+ForEach versus For
+Parallel
+ValueTask versus Task
+Unsafe code
+Compiler optimizations
+
+

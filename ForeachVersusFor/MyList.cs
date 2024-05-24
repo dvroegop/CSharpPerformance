@@ -1,11 +1,7 @@
 ﻿using System.Collections;
 
-namespace _02_ForEach
+namespace ForeachVersusFor
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-
     internal class MyList : IEnumerable<string>
     {
         private readonly string[] _items;
