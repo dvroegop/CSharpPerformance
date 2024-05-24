@@ -2,7 +2,7 @@
 
 namespace ValueTask
 {
-    public class ValueTaskVsTaskBenchmark
+    public class TestCases
     {
         private static readonly Random Random = new();
 

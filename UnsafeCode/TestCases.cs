@@ -8,7 +8,7 @@ using BenchmarkDotNet.Attributes;
 
 namespace UnsafeCode
 {
-    public class SafeAndUnsafeComparison
+    public class TestCases
     {
         private const int BlockSize = 100_000;
         private readonly int[] _array = new int[BlockSize];

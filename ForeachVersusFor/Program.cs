@@ -1,7 +1,7 @@
 ﻿using BenchmarkDotNet.Running;
 using ForeachVersusFor;
 
-var summary = BenchmarkRunner.Run<MyListBenchmark>();
+var summary = BenchmarkRunner.Run<TestCases>();
 
 /*
  *

@@ -3,7 +3,7 @@
 using BenchmarkDotNet.Running;
 using ValueTask;
 
-var summary = BenchmarkRunner.Run<ValueTaskVsTaskBenchmark>();
+var summary = BenchmarkRunner.Run<TestCases>();
 
 /*
  * | Method          | Mean      | Error    | StdDev   |

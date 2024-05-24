@@ -1,7 +1,7 @@
 ﻿using BenchmarkDotNet.Running;
 using ParallelAndSequential;
 
-var summary = BenchmarkRunner.Run<DivisionMeasure>();
+var summary = BenchmarkRunner.Run<TestCases>();
 
 /*
  

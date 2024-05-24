@@ -2,29 +2,23 @@
 
 namespace ForeachVersusFor;
 
-public class MyListBenchmark
+public class TestCases
 {
-    private MyList myList;
-
-    [GlobalSetup]
-    public void Setup()
-    {
-        myList = new MyList();
-    }
+    private readonly MyList _myList  = new MyList();
 
     [Benchmark]
     public void ForLoop()
     {
-        for (int i = 0; i < myList.Items.Length; i++)
+        for (var i = 0; i < _myList.Items.Length; i++)
         {
-            DoSomething(myList.Items[i]);
+            DoSomething(_myList.Items[i]);
         }
     }
 
     [Benchmark]
     public void ForeachLoop()
     {
-        foreach (var item in myList)
+        foreach (var item in _myList)
         {
             DoSomething(item);
         }

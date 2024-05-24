@@ -3,7 +3,7 @@ using BenchmarkDotNet.Running;
 using UnsafeCode;
 
 
-var summary = BenchmarkRunner.Run<SafeAndUnsafeComparison>();
+var summary = BenchmarkRunner.Run<TestCases>();
 
 /*
  

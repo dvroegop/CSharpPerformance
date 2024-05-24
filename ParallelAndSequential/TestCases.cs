@@ -2,7 +2,7 @@
 
 namespace ParallelAndSequential;
 
-public class DivisionMeasure
+public class TestCases
 {
     private const int NumberOfLoopCount = 1_000_000;
     private const int TestNumber = 500_009; // A prime number...
