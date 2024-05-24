@@ -1,71 +1,60 @@
 ﻿using System.Collections;
 
-namespace ForeachVersusFor
+namespace ForeachVersusFor;
+
+internal class MyList : IEnumerable<string>
 {
-    internal class MyList : IEnumerable<string>
+    #region
+
+    public IEnumerator<string> GetEnumerator()
     {
-        private readonly string[] _items;
+        return new MyListEnumerator(Items);
+    }
 
-        public string[] Items => _items;
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
 
-        public MyList()
+    #endregion
+
+    public MyList()
+    {
+        Items = new string[1000];
+        for (var i = 0; i < 1000; i++) Items[i] = $"{i:00000}";
+    }
+
+    public string[] Items { get; }
+
+    private class MyListEnumerator(string[] items) : IEnumerator<string>
+    {
+        public bool MoveNext()
         {
-            _items = new string[1000];
-            for (int i = 0; i < 1000; i++)
+            _position++;
+            return _position < items.Length;
+        }
+
+        public void Reset()
+        {
+            _position = -1;
+        }
+
+        public string Current
+        {
+            get
             {
-                _items[i] = $"{i:00000}";
+                if (_position < 0 || _position >= items.Length) throw new InvalidOperationException();
+                return items[_position];
             }
         }
 
-        public IEnumerator<string> GetEnumerator()
+        object IEnumerator.Current => Current;
+
+        public void Dispose()
         {
-            return new MyListEnumerator(_items);
+            // No resources to dispose
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-
-        private class MyListEnumerator : IEnumerator<string>
-        {
-            private readonly string[] _items;
-            private int _position = -1;
-
-            public MyListEnumerator(string[] items)
-            {
-                _items = items;
-            }
-
-            public bool MoveNext()
-            {
-                _position++;
-                return _position < _items.Length;
-            }
-
-            public void Reset()
-            {
-                _position = -1;
-            }
-
-            public string Current
-            {
-                get
-                {
-                    if (_position < 0 || _position >= _items.Length)
-                    {
-                        throw new InvalidOperationException();
-                    }
-                    return _items[_position];
-                }
-            }
-
-            object IEnumerator.Current => Current;
-
-            public void Dispose()
-            {
-                // No resources to dispose
-            }
-        }
+        private int _position = -1;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BenchmarkDotNet.Attributes;
+// ReSharper disable NotAccessedVariable
 
 namespace ParallelAndSequential;
 

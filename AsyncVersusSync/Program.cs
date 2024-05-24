@@ -11,8 +11,6 @@ for (var i = 0; i < blockSize; i++) dataBlock[i] = $"String: {i:00000000}";
 
 #endregion
 
-
-
 #region Synchronous
 
 // Create a file
@@ -33,7 +31,6 @@ $"Synchronous write took {measureTime} milliseconds.".Dump();
 #endregion
 
 #region Asynchronous
-
 
 sw.Restart();
 

@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ExtensionsLibrary;
+﻿using ExtensionsLibrary;
 
 namespace BoxingAndUnboxing
 {
     internal class TestCases
     {
-
-        
 
         internal void DoSomething()
         {
@@ -20,7 +13,7 @@ namespace BoxingAndUnboxing
         }
 
 
-        #region Causes Boxing
+        #region Passing an object
 
         private void DoSomethingElse(object i)
         {
@@ -28,7 +21,7 @@ namespace BoxingAndUnboxing
         }
         #endregion
 
-        #region No Boxing
+        #region Using a generic method
 
         private void DoSomethingElseAgain<T>(T i)
         {
@@ -55,24 +48,25 @@ namespace BoxingAndUnboxing
 
         public void Interfaces()
         {
-            IComparable i = 42; // Boxing!
-            IEquatable<int> j = 42; // Boxing!
+            var a = 42;
+
+
+            #region The interfaces
+            IComparable i = 42; 
+            IEquatable<int> j = 42;
+            #endregion
+
         }
         #endregion
 
         #region Comparison
         public void Comparison()
         {
-             object s= "My string";
-            var stuff  = true?42:s; // Boxing!
-
+            object s= "My string";
+            var stuff  = true ? 42 : s; 
         }
 
         #endregion
-
-
-
-
 
     }
 }

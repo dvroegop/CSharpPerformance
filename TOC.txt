@@ -1,4 +1,4 @@
-Why?
+Why? (explain benchmarking, and the compiler optimizations)
 Integers!
 Classes versus structs
 Boxing and unboxing

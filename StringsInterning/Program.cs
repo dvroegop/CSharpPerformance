@@ -2,19 +2,22 @@
 
 using ExtensionsLibrary;
 
-const int numberOfStrings = 1000000;
+// Number of strings to create
+const int numberOfStrings = 100;
 
 // Array to hold non-interned strings
-string[] nonInternedStrings = new string[numberOfStrings];
+string[]? nonInternedStrings = new string[numberOfStrings];
 
 // Create a large number of identical strings
 for (int i = 0; i < numberOfStrings; i++)
 {
-    nonInternedStrings[i] = new string(new char[]
-        {'H', 'e', 'l', 'l', 'o', ' ', 'd', 'o', 't', 'N', 'e', 'd', 'S', 'a', 't', 'u', 'r', 'd', 'a', 'y', '!'});
+    nonInternedStrings[i] = new string(new char[] {'H', 'e', 'l', 'l', 'o'});
 }
 
 // Check memory usage before interning
+GC.Collect();
+GC.WaitForPendingFinalizers();
+GC.Collect();
 long memoryBeforeInterning = GC.GetTotalMemory(true);
 
 // Array to hold interned strings
@@ -26,9 +29,20 @@ for (int i = 0; i < numberOfStrings; i++)
     internedStrings[i] = String.Intern(nonInternedStrings[i]);
 }
 
+nonInternedStrings = null;
 // Check memory usage after interning
+GC.Collect();
+GC.WaitForPendingFinalizers();
+GC.Collect();
 long memoryAfterInterning = GC.GetTotalMemory(true);
+
+// Collect garbage and get final memory usage
+GC.Collect();
+GC.WaitForPendingFinalizers();
+GC.Collect();
+long memoryAfterGC = GC.GetTotalMemory(true);
 
 
 $"Memory before interning:\t {memoryBeforeInterning:###,###,###} bytes".Dump();
 $"Memory after interning:\t\t {memoryAfterInterning:###,###,###} bytes".Dump();
+$"Memory after GC: {memoryAfterGC} bytes".Dump();

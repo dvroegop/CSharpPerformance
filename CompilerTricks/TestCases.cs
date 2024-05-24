@@ -6,6 +6,7 @@ namespace CompilerTricks;
 public class TestCases
 {
     private const int N = 10;
+
     [Benchmark]
     public void RunUnoptimized()
     {
@@ -19,7 +20,6 @@ public class TestCases
     }
 
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
-    
     private static int FactorialAggressive(int n)
     {
         if (n <= 1)
