@@ -3,7 +3,7 @@
 using ExtensionsLibrary;
 
 // Number of strings to create
-const int numberOfStrings = 100;
+const int numberOfStrings = 10000;
 
 // Array to hold non-interned strings
 string[]? nonInternedStrings = new string[numberOfStrings];
@@ -15,9 +15,9 @@ for (int i = 0; i < numberOfStrings; i++)
 }
 
 // Check memory usage before interning
-GC.Collect();
+GC.Collect(GC.MaxGeneration, GCCollectionMode.Aggressive);
 GC.WaitForPendingFinalizers();
-GC.Collect();
+GC.Collect(GC.MaxGeneration, GCCollectionMode.Aggressive);
 long memoryBeforeInterning = GC.GetTotalMemory(true);
 
 // Array to hold interned strings
@@ -31,13 +31,13 @@ for (int i = 0; i < numberOfStrings; i++)
 
 nonInternedStrings = null;
 // Check memory usage after interning
-GC.Collect();
+GC.Collect(GC.MaxGeneration, GCCollectionMode.Aggressive);
 GC.WaitForPendingFinalizers();
 GC.Collect();
 long memoryAfterInterning = GC.GetTotalMemory(true);
 
 // Collect garbage and get final memory usage
-GC.Collect();
+GC.Collect(GC.MaxGeneration, GCCollectionMode.Aggressive);
 GC.WaitForPendingFinalizers();
 GC.Collect();
 long memoryAfterGC = GC.GetTotalMemory(true);
